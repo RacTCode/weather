@@ -56,7 +56,7 @@ const Weather = () => {
       getWeather(location.lat, location.lon);
     }
   }, [location]);
-  console.log('API Key:', process.env.REACT_APP_API_KEY);
+  
   return <div>
   <Header fetch={fetchWeatherByLocation} getLocation={getLocation}/>
   {data ? <Card props={data} /> : <p className="font-bold text-center m-36">Loading weather data...</p>}</div>;
