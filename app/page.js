@@ -39,7 +39,7 @@ const Weather = () => {
   const fetchWeatherByLocation = async (location) => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
       );
       setData(response.data); // Update state with the fetched weather data
     } catch (_) {
@@ -56,7 +56,7 @@ const Weather = () => {
       getWeather(location.lat, location.lon);
     }
   }, [location]);
-  
+
   return <div>
   <Header fetch={fetchWeatherByLocation} getLocation={getLocation}/>
   {data ? <Card props={data} /> : <p className="font-bold text-center m-36">Loading weather data...</p>}</div>;
